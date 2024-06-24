@@ -26,10 +26,31 @@ def encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia=5):
 
 if __name__ == "__main__":
   perguntas_respostas = carregar_perguntas("perguntas.txt")
-  limiar_distancia = int(input("Digite o limiar de distância para considerar uma pergunta semelhante:"))
-  while True:
-    pergunta = input("Faça uma pergunta:").lower()
-    if pergunta == "sair":
-      break
-    resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-    print("Resposta:", resposta)
+  # limiar_distancia = int(input("Digite o limiar de distância para considerar uma pergunta semelhante:"))
+  # while True:
+  #   pergunta = input("Faça uma pergunta:").lower()
+  #   if pergunta == "sair":
+  #     break
+  #   resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  #   print("Resposta:", resposta)
+
+  limiar_distancia = 20
+  pergunta = "quem é você?"
+  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  print(f"{pergunta}: {resposta}")
+
+  pergunta = "qual a sua função?"
+  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  print(f"{pergunta}: {resposta}")
+
+  pergunta = "como você funciona?"
+  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  print(f"{pergunta}: {resposta}")
+
+  pergunta = "quem te criou?"
+  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  print(f"{pergunta}: {resposta}")
+
+  pergunta = "qual o sentido da vida?"
+  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  print(f"{pergunta}: {resposta}")

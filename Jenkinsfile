@@ -1,10 +1,6 @@
 pipeline {
-    agent {
-        dockerContainer {
-            image 'devopsjourney1/myjenkinsagents:python'
-            label 'docker-agent-python' 
-        }
-    }
+    agent any
+
     stages {
         stage('Preparação do Ambiente') {
             steps {
@@ -32,7 +28,7 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                sh 'python chat_bot.py'
+                sh 'python3 chat_bot.py'
             }
         }
     }
