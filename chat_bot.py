@@ -1,4 +1,4 @@
-# sh pip install python-Levenshtein
+import sys
 import Levenshtein
 
 def carregar_perguntas(arquivo):
@@ -7,8 +7,6 @@ def carregar_perguntas(arquivo):
     for linha in f:
       pergunta, resposta = linha.strip().split("|")
       perguntas_respostas[pergunta.lower()] = resposta
-
-
   return perguntas_respostas
 
 def encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia=5):
@@ -25,32 +23,12 @@ def encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia=5):
       return "Pergunta não encontrada."
 
 if __name__ == "__main__":
+  if len(sys.argv) != 2:
+    print("Uso: python3 chat_bot.py <pergunta>")
+    sys.exit(1)
+
+  pergunta = sys.argv[1].lower()
   perguntas_respostas = carregar_perguntas("perguntas.txt")
-  # limiar_distancia = int(input("Digite o limiar de distância para considerar uma pergunta semelhante:"))
-  # while True:
-  #   pergunta = input("Faça uma pergunta:").lower()
-  #   if pergunta == "sair":
-  #     break
-  #   resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-  #   print("Resposta:", resposta)
-
-  limiar_distancia = 20
-  pergunta = "quem é você?"
-  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-  print(f"{pergunta}: {resposta}")
-
-  pergunta = "qual a sua função?"
-  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-  print(f"{pergunta}: {resposta}")
-
-  pergunta = "como você funciona?"
-  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-  print(f"{pergunta}: {resposta}")
-
-  pergunta = "quem te criou?"
-  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-  print(f"{pergunta}: {resposta}")
-
-  pergunta = "qual o sentido da vida?"
+  limiar_distancia = 5
   resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
   print(f"{pergunta}: {resposta}")

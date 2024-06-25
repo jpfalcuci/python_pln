@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'PERGUNTA', defaultValue: '', description: 'Pergunta a ser processada pelo chatbot')
+    }
+
     stages {
         stage('Preparação do Ambiente') {
             steps {
@@ -28,7 +32,7 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                sh 'python3 chat_bot.py'
+                sh "python3 chat_bot.py '${params.PERGUNTA}'"
             }
         }
     }
