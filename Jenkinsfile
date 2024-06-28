@@ -11,7 +11,7 @@ pipeline {
         stage('Ler Perguntas do Arquivo') {
             steps {
                 script {
-                    def perguntasFile = 'perguntas_disponiveis.txt'
+                    def perguntasFile = 'perguntas.txt'
                     perguntasDisponiveis = readFile(perguntasFile).split('\n').collect { it.split('\\|')[0].trim() }
                 }
             }
