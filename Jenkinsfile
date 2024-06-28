@@ -38,12 +38,13 @@ pipeline {
             }
         }
 
-        post {
-            always {
-                mail body: 'O pipeline ${currentBuild.fullDisplayName} foi executado!',
-                    subject: 'Pipeline ${currentBuild.fullDisplayName} executado',
-                    to: "${params.EMAIL_RECIPIENTS}"
-            }
+    }
+    
+    post {
+        always {
+            mail body: 'O pipeline ${currentBuild.fullDisplayName} foi executado!',
+                subject: 'Pipeline ${currentBuild.fullDisplayName} executado',
+                to: "${params.EMAIL_RECIPIENTS}"
         }
     }
 }
