@@ -23,7 +23,7 @@ def encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia=5):
       return "Pergunta não encontrada."
 
 if __name__ == "__main__":
-  if len(sys.argv) != 2:
+  if len(sys.argv) != 3:
     print("Uso: python3 chat_bot.py <pergunta> <limiar_distancia>")
     sys.exit(1)
 
