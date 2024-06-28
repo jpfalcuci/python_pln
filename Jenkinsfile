@@ -34,13 +34,7 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                script {
-                    def perguntasSelecionadas = params.PERGUNTAS.tokenize('\n')
-                    def limiarDistancia = params.LIMIAR_DISTANCIA.toInteger()
-                    perguntasSelecionadas.each { pergunta ->
-                        sh "python3 chat_bot.py '${pergunta}' ${limiarDistancia}"
-                    }
-                }
+                sh "python3 chat_bot.py '${params.PERGUNTA}' '${params.LIMIAR_DISTANCIA}'"
             }
         }
     }
