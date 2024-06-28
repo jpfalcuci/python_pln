@@ -37,5 +37,13 @@ pipeline {
                 sh "python3 chat_bot.py '${params.PERGUNTA}' '${params.LIMIAR_DISTANCIA}'"
             }
         }
+
+        post {
+            always {
+                mail body: 'O pipeline ${currentBuild.fullDisplayName} foi executado!',
+                    subject: 'Pipeline ${currentBuild.fullDisplayName} executado',
+                    to: "${params.EMAIL_RECIPIENTS}"
+            }
+        }
     }
 }
